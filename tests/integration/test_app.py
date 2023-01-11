@@ -24,5 +24,5 @@ def test_put_resource_returns_501_response() -> None:
 
 
 def test_patch_resource_returns_501_response() -> None:
-    result = app.test_client().put('/api/resource')
+    result = app.test_client().patch('/api/resource')
     assert result.status_code == UNIMPLEMENTED
