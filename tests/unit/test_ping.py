@@ -7,31 +7,30 @@ def test_ping_returns_501_response() -> None:
     result = ping()
     assert result.status_code == UNIMPLEMENTED
 
-def test_ping_returns_501_response() -> None:
-    result = ping()
-    assert result.status == UNIMPLEMENTED
-
 
 def test_get_resource_returns_501_response() -> None:
     result = get_resource()
-    assert result.status == UNIMPLEMENTED
+    assert result.status_code == UNIMPLEMENTED
 
 
 def test_post_resource_returns_501_response() -> None:
     result = create_resource()
-    assert result.status == UNIMPLEMENTED
+    assert result.status_code == UNIMPLEMENTED
 
 
 def test_delete_resource_returns_501_response() -> None:
-    result = delete_resource()
-    assert result.status == UNIMPLEMENTED
+    resource_id = "1"
+    result = delete_resource(resource_id)
+    assert result.status_code == UNIMPLEMENTED
 
 
 def test_put_resource_returns_501_response() -> None:
-    result = update_resource()
-    assert result.status == UNIMPLEMENTED
+    resource_id = "2"
+    result = update_resource(resource_id)
+    assert result.status_code == UNIMPLEMENTED
 
 
 def test_patch_resource_returns_501_response() -> None:
-    result = patch_resource()
-    assert result.status == UNIMPLEMENTED
+    resource_id = "3"
+    result = patch_resource(resource_id)
+    assert result.status_code == UNIMPLEMENTED
