@@ -2,6 +2,8 @@ from make_it.app import ping, get_resource, create_resource, delete_resource, up
 
 UNIMPLEMENTED = 501
 
+#testy jednostkowe; testy unity sprawdzamy czy funkcja działa poprawnie
+
 
 def test_ping_returns_501_response() -> None:
     result = ping()
