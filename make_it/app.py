@@ -48,12 +48,10 @@ def create_user() -> Response:
     controller.add(request=add_user_request)
     return jsonify(user)
 
-    return jsonify(user)
-
-@app.post('/users')
+@app.post('/users/update')
 def update_user() -> Response:
     user = request.json
     controller = UpdateUserController()
-    add_user_request = UpdateUserRequest(user=user)
-    controller.update(request=add_user_request)
+    update_user_request = UpdateUserRequest(user=user)
+    controller.update(request=update_user_request)
     return jsonify(user)

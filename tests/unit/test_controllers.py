@@ -1,7 +1,5 @@
 import json
-
 import pytest
-from flask import request
 
 from make_it.controllers import AddUserController, AddUserRequest, UpdateUserRequest, UpdateUserController
 
