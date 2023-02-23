@@ -1,6 +1,7 @@
 from flask import Flask, Response, request, jsonify
 
 from make_it.controllers import AddUserController, AddUserRequest, UpdateUserController, UpdateUserRequest
+from make_it.repositories import UserRepository
 
 app = Flask(__name__) #__name__ is a special variable in Python that is set to the name of the current module.
 
@@ -43,10 +44,12 @@ def patch_resource(resource_id):
 @app.post('/users')
 def create_user() -> Response:
     user = request.json
-    controller = AddUserController()
+    repository = UserRepository()
+    controller = AddUserController(repository)
     add_user_request = AddUserRequest(user=user)
     controller.add(request=add_user_request)
     return jsonify(user)
+
 
 @app.post('/users/update')
 def update_user() -> Response:

@@ -28,3 +28,4 @@ def test_app_user_update_endpoint(payload: dict) -> None:
     with app.test_request_context(method='POST', json=payload):
         result = update_user()
     assert result.json == payload
+ 
