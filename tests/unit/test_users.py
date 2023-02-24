@@ -2,29 +2,48 @@ import json
 
 import pytest
 from make_it.app import app
-from make_it.app import create_user, update_user
 
 
 @pytest.fixture
 def payload() -> dict:
-    return {"firt_name": "Nati", "last_name": "Nowak"}
+    return {"name": "Nati", "email": "nati@example.com"}
 
 
-def test_app_user_create_endpoint(payload: dict) -> None:
-    with app.test_request_context(method='POST', json=payload):
-        result = create_user()
-    assert result.json == payload
+def test_ping_endpoint() -> None:
+    with app.test_client() as client:
+        response = client.get('/ping')
+        assert response.status_code == 501
 
 
-def test_app_user_prints_user_on_console(payload: dict, capsys) -> None:
-    with app.test_request_context(method='POST', json=payload):
-        create_user()
-    actual = capsys.readouterr().out
-    expected = f"{json.dumps(payload)}\n".replace('"', "'")
-    assert actual == expected
+def test_get_users_endpoint() -> None:
+    with app.test_client() as client:
+        response = client.get('/users')
+        assert response.status_code == 501
 
 
-def test_app_user_update_endpoint(payload: dict) -> None:
-    with app.test_request_context(method='POST', json=payload):
-        result = update_user()
-    assert result.json == payload
+def test_create_user_endpoint(payload: dict) -> None:
+    with app.test_client() as client:
+        response = client.post('/users', json=payload)
+        assert response.status_code == 201
+        assert response.get_json() == payload
+
+
+def test_update_user_endpoint(payload: dict) -> None:
+    with app.test_client() as client:
+        response = client.put('/users/1', json=payload)
+        assert response.status_code == 200
+        assert response.get_json() == payload
+
+
+def test_patch_user_endpoint(payload: dict) -> None:
+    with app.test_client() as client:
+        response = client.patch('/users/1', json=payload)
+        assert response.status_code == 200
+        key = next(iter(payload))
+        assert response.get_json() == {key: payload[key]}
+
+
+def test_delete_user_endpoint() -> None:
+    with app.test_client() as client:
+        response = client.delete('/users/1')
+        assert response.status_code == 204

@@ -37,18 +37,19 @@ def test_add_user_controller_has_add_method(
 def test_calls_add_in_repository_on_calling_controller(
     controller: AddUserController,
     repository: UserRepository,
-    payload: dict,) -> None:
+    payload: dict) -> None:
     request = AddUserRequest(user=payload)
-    controller.add(request)
+    controller.add(repository=repository, request=request)
     assert repository.add.call_count > 0
 
 
 def test_add_user_request_has_user_attribute(payload: dict) -> None:
-    requests = AddUserRequest(user=payload)
-    assert requests.user
+    request = AddUserRequest(user=payload)
+    assert request.user
 
 
-def test_update_user_controller_has_add_method(capsys, payload: dict) -> None:
+def test_update_user_controller_has_add_method(
+    capsys: CaptureFixture, payload: dict) -> None:
     controller = UpdateUserController()
     request = UpdateUserRequest(user=payload)
     controller.update(request)

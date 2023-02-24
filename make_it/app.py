@@ -11,33 +11,38 @@ def ping():
 
 
 # Define a GET route
-@app.route('/api/resource', methods=['GET'])
+@app.route('/users', methods=['GET'])
 def get_resource():
     return Response(status=501)
 
 
 # Define a POST route
-@app.route('/api/resource', methods=['POST'])
+@app.route('/users', methods=['POST'])
 def create_resource():
-    return Response(status=501)
+    user = request.json
+    return jsonify(user), 201
 
 
 # Define a DELETE route
-@app.route('/api/resource/<resource_id>', methods=['DELETE'])
-def delete_resource(resource_id):
-    return Response(status=501)
+@app.route('/users/<user_id>', methods=['DELETE'])
+def delete_resource(user_id):
+    return Response(status=204)
+
 
 
 # Define a PUT route
-@app.route('/api/resource/<resource_id>', methods=['PUT'])
-def update_resource(resource_id):
-    return Response(status=501)
+@app.route('/users/<user_id>', methods=['PUT'])
+def update_resource(user_id):
+    user = request.json
+    return jsonify(user), 200
 
 
 # Define a PATCH route
-@app.route('/api/resource/<resource_id>', methods=['PATCH'])
-def patch_resource(resource_id):
-    return Response(status=501)
+@app.route('/users/<user_id>', methods=['PATCH'])
+def patch_resource(user_id):
+    user = request.json
+    key = next(iter(user)) # get the first (and only) key in the dictionary
+    return jsonify({key: user[key]}), 200
 
 
 @app.post('/users')
