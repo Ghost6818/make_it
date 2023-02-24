@@ -31,13 +31,16 @@ class GetUsersController:
     def get(self, request: GetUsersRequest) -> dict:
         raise NotImplementedError
 
+
 class PutUserController:
     def put(self, request: PutUserRequest) -> dict:
         raise NotImplementedError
 
+
 class PatchUserController:
     def patch(self, request: PatchUserRequest) -> dict:
         raise NotImplementedError
+
 
 class DeleteUserController:
     def delete(self, request: DeleteUserRequest) -> None:
