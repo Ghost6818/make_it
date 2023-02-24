@@ -11,7 +11,7 @@ def test_get_resource_returns_501_response() -> None:
 
 
 def test_create_resource_user() -> None:
-    result = app.create_user()
+    result = app.crate_user()
     assert result.status_code == UNIMPLEMENTED
 
 
