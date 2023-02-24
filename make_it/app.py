@@ -1,7 +1,6 @@
 from flask import Flask, Response, request, jsonify
 
-from make_it.controllers import AddUserController, AddUserRequest, UpdateUserController, UpdateUserRequest
-
+from make_it.controllers import AddUserController, AddUserRequest, UpdateUserController, UpdateUserRequest, GetUserController, PatchUserController, DeleteUserController
 app = Flask(__name__) #__name__ is a special variable in Python that is set to the name of the current module.
 
 
@@ -53,10 +52,36 @@ def create_user() -> Response:
     controller.add(request=add_user_request)
     return jsonify(user)
 
+
 @app.post('/users/update')
 def update_user() -> Response:
     user = request.json
     controller = UpdateUserController()
     update_user_request = UpdateUserRequest(user=user)
     controller.update(request=update_user_request)
+    return jsonify(user)
+
+
+
+
+@app.get('/users/<user_id>')
+def get_user(user_id) -> Response:
+    controller = GetUserController()
+    controller.get(request=user_id)
+    return Response(status=501)
+
+
+@app.delete('/users/<user_id>')
+def delete_user(user_id) -> Response:
+    controller = DeleteUserController()
+    controller.delete(request=user_id)
+    return Response(status=204)
+
+
+@app.patch('/users/<user_id>')
+def patch_user(user_id) -> Response:
+    user = request.json
+    controller = PatchUserController()
+    update_user_request = UpdateUserRequest(user=user)
+    controller.patch(request=update_user_request)
     return jsonify(user)

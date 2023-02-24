@@ -41,3 +41,9 @@ class PatchUserController:
 class DeleteUserController:
     def delete(self, request: DeleteUserRequest) -> None:
         raise NotImplementedError
+
+
+class GetUserController:
+    def get(self, request) -> None:
+        raise NotImplementedError()
+

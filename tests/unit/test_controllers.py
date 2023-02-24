@@ -24,9 +24,10 @@ def controller(user_repository: UserRepository) -> AddUserController:
 
 
 def test_add_user_controller_has_add_method(
-    controller: AddUserController,
     capsys: CaptureFixture,
-    payload: dict) -> None:
+    payload: dict,
+    controller: AddUserController,
+) -> None:
     request = AddUserRequest(user=payload)
     controller.add(request)
     actual = capsys.readouterr().out
@@ -35,11 +36,12 @@ def test_add_user_controller_has_add_method(
 
 
 def test_calls_add_in_repository_on_calling_controller(
-    controller: AddUserController,
-    repository: UserRepository,
-    payload: dict) -> None:
+        controller: AddUserController,
+        repository: Mock,
+        payload: dict,
+) -> None:
     request = AddUserRequest(user=payload)
-    controller.add(repository=repository, request=request)
+    controller.add(request)
     assert repository.add.call_count > 0
 
 
