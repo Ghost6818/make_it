@@ -100,7 +100,7 @@ class TestEndpoints(unittest.TestCase):
         self.assertDictEqual(response.json, user)
 
     def test_patch_user(self):
-        user_id = 123
+        user_id = 12
         user = {'name': 'John'}
         response = self.client.patch(f'/users/{user_id}', json=user)
         self.assertEqual(response.status_code, 200)
