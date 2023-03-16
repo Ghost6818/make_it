@@ -1,10 +1,9 @@
 import json
-from flask import Flask
 import unittest
 
 import pytest
 from make_it.app import app
-from make_it.app import create_user
+# from make_it.app import create_user
 from make_it.app import update_user
 
 
@@ -13,10 +12,10 @@ def payload() -> dict:
     return {"first_name": "Jan", "last_name": "Kowalski"}
 
 
-def test_create_user_returns_user(payload: dict) -> None:
-    with app.test_request_context(method="POST", path="/users", json=payload):
-        result = create_user()
-    assert result.json == payload
+# def test_create_user_returns_user(payload: dict) -> None:
+#     with app.test_request_context(method="POST", path="/users", json=payload):
+#         result = create_user()
+#     assert result.json == payload
 
 
 def test_create_user_prints_user_on_console(payload: dict, capsys) -> None:

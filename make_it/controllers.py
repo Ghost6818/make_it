@@ -25,23 +25,23 @@ class UpdateUserController:
 
 class GetUsersController:
     def get(self, request: GetUsersRequest) -> dict:
-        raise NotImplementedError
+        raise NotImplementedError()
 
 
 class PutUserController:
     def put(self, request: PutUserRequest) -> dict:
-        raise NotImplementedError
+        raise NotImplementedError()
 
 
 class PatchUserController:
     def patch(self, request: PatchUserRequest) -> dict:
-        raise NotImplementedError
+        raise NotImplementedError()
 
 
 class DeleteUserController:
     def delete(self, request: DeleteUserRequest) -> None:
-        raise NotImplementedError
-
+        raise NotImplementedError()
+# exeption hendler in app.py
 
 class GetUserController:
     def get(self, request) -> None:
