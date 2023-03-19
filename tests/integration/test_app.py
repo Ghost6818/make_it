@@ -2,8 +2,6 @@ from make_it.app import app
 
 UNIMPLEMENTED = 501
 
-#test integracyjne sprawdzamy całą aplikacje czy dobrze porejestrowała
-
 
 def test_get_resource_returns_501_response() -> None:
     with app.test_client() as client:
