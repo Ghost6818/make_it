@@ -5,6 +5,8 @@ import pytest
 @pytest.fixture
 def repository() -> UserRepository:
     return UserRepository()
+
+
 class TestUserRepository:
     def test_can_instantiate_user_repository(self):
         repository = UserRepository()
