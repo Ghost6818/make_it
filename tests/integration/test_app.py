@@ -9,6 +9,13 @@ def test_get_resource_returns_501_response() -> None:
     assert result.status_code == UNIMPLEMENTED
 
 
+#testy z lekcji
+def test_app_has_user_get_endpoint() -> None:
+    client = app.test_client()
+    response = client.get(path='/users/1')
+    assert response.status_code == UNIMPLEMENTED
+
+
 def test_create_resource_user() -> None:
     payload = {'first_name': 'Nati', 'last_name': 'Nowak'}
     with app.test_client() as client:
