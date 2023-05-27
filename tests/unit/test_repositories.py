@@ -15,19 +15,15 @@ class TestUserRepository:
     def test_user_repository_has_add_method(self):
         repository = UserRepository()
         with pytest.raises(NotImplementedError):
-            repository.add({})
+            repository.add()
 
     def test_user_repository_has_get_method(self):
         repository = UserRepository()
         with pytest.raises(NotImplementedError):
-            repository.get(1)
+            repository.get()
 
-    def test_user_repository_has_update_method(self):
-        repository = UserRepository()
-        with pytest.raises(NotImplementedError):
-            repository.update(1, {})
 
     def test_user_repository_has_delete_method(self):
         repository = UserRepository()
         with pytest.raises(NotImplementedError):
-            repository.delete(1)
+            repository.delete()

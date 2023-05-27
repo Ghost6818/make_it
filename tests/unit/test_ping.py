@@ -5,12 +5,6 @@ from make_it.app import app
 UNIMPLEMENTED = 501
 
 
-def test_ping_returns_501_response() -> None:
-    with app.test_client() as client:
-        result = client.get('/ping')
-        assert result.status_code == UNIMPLEMENTED
-
-
 def test_get_resource_returns_501_response() -> None:
     with app.test_client() as client:
         result = client.get('/resource')

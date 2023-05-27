@@ -3,13 +3,13 @@ from make_it.domain import GetUsersRequest, PutUserRequest, PatchUserRequest, De
 
 
 @dataclass
+class GetUserRequest:
+    user_id: int
+
+
+@dataclass
 class AddUserRequest:
     user: dict
-
-
-class AddUserController:
-    def add(self, request: AddUserRequest) -> None:
-        print(request.user)
 
 
 @dataclass
@@ -17,31 +17,42 @@ class UpdateUserRequest:
     user: dict
 
 
-class UpdateUserController:
-    def update(self, request: UpdateUserRequest) -> None:
-        print(request.user)
+@dataclass
+class PutUserRequest:
+    user: dict
 
 
-class GetUsersController:
-    def get(self, request: GetUsersRequest) -> dict:
-        raise NotImplementedError()
+@dataclass
+class PatchUserRequest:
+    user: dict
 
 
-class PutUserController:
-    def put(self, request: PutUserRequest) -> dict:
-        raise NotImplementedError()
+@dataclass
+class DeleteUserRequest:
+    user_id: int
 
-
-class PatchUserController:
-    def patch(self, request: PatchUserRequest) -> dict:
-        raise NotImplementedError()
-
-
-class DeleteUserController:
-    def delete(self, request: DeleteUserRequest) -> None:
-        raise NotImplementedError()
 
 
 class GetUserController:
-    def get(self, request) -> None:
-        raise NotImplementedError()
+    def get(self, id: int):
+        raise NotImplementedError
+
+
+class AddUserController:
+    def add(self, request: AddUserRequest):
+        raise NotImplementedError
+
+
+class PutUserController:
+    def put(self, request: PutUserRequest, id: int):
+        raise NotImplementedError
+
+
+class PatchUserController:
+    def patch(self, request: PatchUserRequest, id: int):
+        raise NotImplementedError
+
+
+class DeleteUserController:
+    def delete(self, id: int):
+        raise NotImplementedError
